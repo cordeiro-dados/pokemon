@@ -51,13 +51,3 @@ collector.auto_exec()
 
 df = spark.read.json("/datalake/pokemon/pokemon")
 df.createOrReplaceTempView("pokemon")
-
-# COMMAND ----------
-
-# MAGIC %sql
-# MAGIC select
-# MAGIC   ingestion_date,
-# MAGIC   poke.*
-# MAGIC from
-# MAGIC   pokemon
-# MAGIC lateral view explode(results) as poke --lateral view, com explode, ele quebra a result, trazendo toda informacao do dicionario da variavel results
